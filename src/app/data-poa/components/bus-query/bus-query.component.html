@@ -1,0 +1,47 @@
+<div class="base-bus">
+  <div class="container-table">
+    <mat-form-field>
+      <mat-label>Filter</mat-label>
+      <input
+        matInput
+        class="filter"
+        (keyup)="applyFilter($event)"
+        placeholder="1 De Maio"
+        #input
+      />
+    </mat-form-field>
+
+    <table mat-table [dataSource]="dataSource" class="table">
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>Id</th>
+        <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+      </ng-container>
+      <ng-container matColumnDef="codigo">
+        <th mat-header-cell *matHeaderCellDef>Código</th>
+        <td mat-cell *matCellDef="let element">{{ element.codigo }}</td>
+      </ng-container>
+      <ng-container matColumnDef="nome">
+        <th mat-header-cell *matHeaderCellDef>Nome</th>
+        <td mat-cell *matCellDef="let element">{{ element.nome }}</td>
+      </ng-container>
+      <ng-container matColumnDef="itinerario">
+        <th mat-header-cell *matHeaderCellDef>Itinerário</th>
+        <td mat-cell *matCellDef="let element">
+          <button
+            class="btn-route"
+            mat-raised-button
+            (click)="getItinerary(element.id)"
+          >
+            <i class="fas fa-route"></i>
+            Ver Itinerário
+          </button>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[10, 15, 20]" showFirstLastButtons>
+    </mat-paginator>
+  </div>
+</div>
