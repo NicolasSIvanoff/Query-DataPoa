@@ -10,9 +10,8 @@ import { BusModel } from '../model/bus-model';
 export class QueryRouterBusService {
 
   constructor(private http: HttpClient) { }
-  apiBus = 'http://www.poatransporte.com.br/php/facades/process.php?a=nc&p=%25&t=';
-
-  apiItinerary = 'http://www.poatransporte.com.br/php/facades/process.php?a=il&p=';
+  public apiBus = 'http://www.poatransporte.com.br/php/facades/process.php?a=nc&p=%25&t=';
+  public apiItinerary = 'http://www.poatransporte.com.br/php/facades/process.php?a=il&p=';
 
   public getApiBus(): Observable<BusModel[]> {
     return this.http.get<BusModel[]>(`${this.apiBus}o`);

@@ -1,1 +1,59 @@
 /* You can add global styles to this file, and also import other style files */
+
+// @import "~@angular/material/prebuilt-themes/purple-green.css";
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: #e6e6e6;
+}
+
+.base-bus {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 2%;
+  align-items: center;
+}
+
+.container-table {
+  width: 70%;
+  table {
+    width: 100%;
+  }
+}
+
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td,
+th {
+  width: 25%;
+  // color: #050505 !important;
+}
+
+.btn-route {
+  background-color: none;
+  border: 1px solid #1c8aff !important;
+  color: #fff;
+  font-family: "Foco", sans-serif;
+}
+
+.btn-route:hover {
+  background-color: #1c8aff;
+}
+
+.mat-form-field {
+  width: 30%;
+  font-size: 14px;
+  background: #424242;
+  color: white;
+  border-radius: 5px;
+  margin-bottom: 2px;
+  padding: 1% 1% 0 1%;
+}
