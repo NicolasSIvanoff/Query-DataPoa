@@ -5,8 +5,8 @@ import { Icon, Map, Polyline, marker, tileLayer } from 'leaflet';
 import { Observable } from 'rxjs';
 import { selectItinerarySuccessFiltred } from 'src/app/store/selectors/itinerary-query.selector';
 import { AppState } from 'src/app/store/state/app.state';
-import * as ActionItinerary from '../../../store/actions/itinerary-query.actions';
-import { ItineraryFiltredModel } from '../../model/itinerary-filtred-model';
+import * as ActionItinerary from '../../../../store/actions/itinerary-query.actions';
+import { ItineraryFiltredModel } from '../../../model/itinerary-filtred-model';
 @Component({
   selector: 'app-route-map',
   templateUrl: './route-map.component.html',

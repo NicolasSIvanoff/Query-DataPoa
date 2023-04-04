@@ -13,7 +13,7 @@
 
     .text-map {
       font-family: "emoji", "Font Awesome 5 Brands";
-      font-size: 26px;
+      font-size: 1.5rem;
       color: white;
       margin-bottom: 0.8em;
     }
@@ -23,6 +23,19 @@
       width: 70%;
       border: 3px solid #2b2a2a;
       border-radius: 5px;
+    }
+  }
+}
+@media screen and (max-width: 768px) {
+  .base {
+    .container-map {
+      margin: 0;
+      .text-map {
+        font-size: 1rem;
+      }
+      #map {
+        width: 100%;
+      }
     }
   }
 }
