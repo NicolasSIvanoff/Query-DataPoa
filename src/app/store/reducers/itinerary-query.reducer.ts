@@ -1,12 +1,13 @@
 import { createReducer, on } from '@ngrx/store';
 import * as ItineraryActions from '../actions/itinerary-query.actions';
 import { ItineraryModel } from 'src/app/data-poa/model/itinerary-model';
+import { ItineraryFiltredModel } from 'src/app/data-poa/model/itinerary-filtred-model';
 
 export const itineraryFeatureKey = 'itineraryQuery';
 
 export interface StateItinerary {
   itineraryData: ItineraryModel[];
-  itineraryFiltred: ItineraryModel[];
+  itineraryFiltred: ItineraryFiltredModel[];
   error: string;
 }
 

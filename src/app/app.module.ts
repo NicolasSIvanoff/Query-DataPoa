@@ -23,6 +23,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { FooterComponent } from './data-poa/components/shared/footer/footer.component';
 import { HeaderComponent } from './data-poa/components/shared/header/header.component';
 import { MiniBusQueryEffects } from './store/effects/minibus-query-effects';
+import { RouteMapComponent } from './data-poa/components/route-map/route-map.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +31,8 @@ import { MiniBusQueryEffects } from './store/effects/minibus-query-effects';
     BusQueryComponent,
     QueryItineraryComponent,
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
+    RouteMapComponent
   ],
   imports: [
     MatSlideToggleModule,

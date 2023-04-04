@@ -1,15 +1,32 @@
 <div class="base-bus">
+  <div class="container-img">
+    <img
+      class="bus-img"
+      src="../../../../assets/img/bus-med.jpg"
+      alt="Image bus"
+      loading="lazy"
+    />
+    <div class="text">
+      <span class="text-img">{{ findBusMessage }}</span>
+      <p>Rotas POA</p>
+    </div>
+  </div>
   <div class="container-table">
-    <mat-form-field>
-      <mat-label>Filter</mat-label>
-      <input
-        matInput
-        class="filter"
-        (keyup)="applyFilter($event)"
-        placeholder="1 De Maio"
-        #input
-      />
-    </mat-form-field>
+    <div class="container-top-table">
+      <span class="text-top-table"
+        >Conheça os itinerários dos ônibus da sua cidade.</span
+      >
+      <mat-form-field>
+        <mat-label>Filter</mat-label>
+        <input
+          matInput
+          class="filter"
+          (keyup)="applyFilter($event)"
+          placeholder="1 De Maio"
+          #input
+        />
+      </mat-form-field>
+    </div>
 
     <table mat-table [dataSource]="dataSource" class="table">
       <ng-container matColumnDef="id">
@@ -45,3 +62,4 @@
     </mat-paginator>
   </div>
 </div>
+<app-footer></app-footer>

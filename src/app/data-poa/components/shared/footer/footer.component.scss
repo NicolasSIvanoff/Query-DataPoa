@@ -1,0 +1,41 @@
+.base-footer {
+  width: 100%;
+  height: 130px;
+  color: white;
+  margin-top: 2%;
+  left: 0;
+  bottom: 0;
+
+  .container-footer-icons {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #292b2e;
+    height: 80px;
+
+    a {
+      width: 36px;
+      height: 38px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-decoration: none;
+      color: white;
+      margin: 4px;
+      border: 1px solid white;
+      border-radius: 5px;
+    }
+  }
+  .container-descrition {
+    width: 100%;
+    height: 50px;
+    background-color: #080808ec;
+    // background-color: rgba(8, 8, 8, 0.2);
+    font-size: 14px;
+    font-family: "Foco", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
