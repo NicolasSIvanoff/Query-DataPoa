@@ -6,9 +6,10 @@ export class ModifyObject {
 
   constructor(public store: Store<AppState>) { }
 
-  public objectForArray(obj: any): any {
+  public objectForArray(obj: any): ItineraryModel[] {
     const array = [];
-    let itineraryFiltred: ItineraryModel[] = [{ id: '', nome: '', codigo: '', coordenadas: { lat: '', lng: '' } }]
+    let newObj = { id: '', ...obj };
+    const itineraryFiltred: ItineraryModel[] = [{ id: '', nome: '', codigo: '', coordenadas: { lat: '', lng: '' } }]
     for (const prop in obj) {
       switch (prop) {
         case 'idlinha':
@@ -21,7 +22,7 @@ export class ModifyObject {
           itineraryFiltred[0].codigo = (obj[prop]);
           break;
         default:
-          const newObj = { id: prop, ...obj[prop] };
+          newObj = { id: prop, ...obj[prop] };
           array.push(newObj);
       }
     }
