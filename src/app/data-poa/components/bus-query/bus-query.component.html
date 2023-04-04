@@ -1,11 +1,33 @@
 <div class="base-bus">
   <div class="container-img">
-    <img
+    <picture>
+      <source
+        class="bus-img"
+        srcset="../../../../assets/img/bus-peq.jpg"
+        media="(max-width: 480px)"
+      />
+      <source
+        class="bus-img"
+        srcset="../../../../assets/img/bus-med.jpg"
+        media="(max-width: 768px)"
+      />
+      <source
+        class="bus-img"
+        srcset="../../../../assets/img/bus-gra.jpg"
+        media="(max-width: 1200px)"
+      />
+      <img
+        src="../../../../assets/img/bus-med.jpg"
+        class="bus-img"
+        alt="Imagem padrão"
+      />
+    </picture>
+    <!-- <img
       class="bus-img"
       src="../../../../assets/img/bus-med.jpg"
       alt="Image bus"
       loading="lazy"
-    />
+    /> -->
     <div class="text">
       <span class="text-img">{{ findBusMessage }}</span>
       <p>Rotas POA</p>
@@ -22,7 +44,7 @@
           matInput
           class="filter"
           (keyup)="applyFilter($event)"
-          placeholder="1 De Maio"
+          placeholder="Ex: 1 De Maio"
           #input
         />
       </mat-form-field>
@@ -50,7 +72,7 @@
             (click)="getItinerary(element.id)"
           >
             <i class="fas fa-route"></i>
-            Ver Itinerário
+            <span class="itinerary"> Ver Itinerário</span>
           </button>
         </td>
       </ng-container>

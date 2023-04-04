@@ -14,15 +14,11 @@
   <div class="container-table">
     <div class="container-top-table">
       <div class="text-top-table">
-        <span> Veja uma parada específica na tabela. </span>
-        <span>
+        <span class="message"> Veja uma parada específica na tabela. </span>
+        <span class="message">
           Ou se preferir, veja todo o trajeto no nosso mapa clicando aqui!
-          <button
-            mat-raised-button
-            class="btn-route"
-            (click)="openMap(itineraryData[0].id)"
-          >
-            Ver rota completa
+          <button class="btn-route" (click)="openMap(itineraryData[0].id)">
+            Rota completa
           </button>
         </span>
       </div>

@@ -34,7 +34,6 @@ export class RouteMapComponent implements OnInit {
   public getItineraryData(): void {
     this.itineraryFiltred$.subscribe(data => {
       this.itineraryFiltred = data
-      console.log(this.itineraryFiltred);
       if (data.length > 0) {
         this.loadMap()
       }

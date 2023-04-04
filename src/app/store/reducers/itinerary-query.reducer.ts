@@ -26,6 +26,7 @@ export const reducerItinerary = createReducer(
       itineraryData: action.itinerary,
     })
   ),
+
   on(
     ItineraryActions.loadItinerarysSuccessFiltred,
     (state, action): StateItinerary => ({
@@ -33,6 +34,7 @@ export const reducerItinerary = createReducer(
       itineraryFiltred: action.itineraryFiltred,
     })
   ),
+
   on(
     ItineraryActions.loadItinerarysFailure,
     (state, action): StateItinerary => ({

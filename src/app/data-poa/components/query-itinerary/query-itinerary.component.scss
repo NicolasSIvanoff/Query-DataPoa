@@ -1,0 +1,22 @@
+.message {
+  font-family: "emoji", "Font Awesome 5 Brands";
+  font-size: 1em;
+  display: inline;
+  width: 100%;
+  text-align: center;
+}
+
+.btn-route {
+  font-size: 1em;
+  font-family: "emogi", "Font Awesome 5 Brands";
+  background-color: transparent;
+  border: 1px solid #0dcaf0;
+  border-radius: 5px;
+  width: 100%;
+  cursor: pointer;
+  max-width: 120px;
+}
+.btn-route:hover {
+  background-color: #0dcaf0;
+  color: #fff;
+}

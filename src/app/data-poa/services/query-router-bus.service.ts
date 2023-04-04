@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { BusModel } from '../model/bus-model';
+import { ItineraryModel } from '../model/itinerary-model';
 
 
 @Injectable({
@@ -19,7 +20,7 @@ export class QueryRouterBusService {
   public getApiMiniBus(): Observable<BusModel[]> {
     return this.http.get<BusModel[]>(`${this.apiBus}l`);
   }
-  public getApiItinerary(id: number): Observable<any> {
-    return this.http.get<any>(`${this.apiItinerary}${id}`);
+  public getApiItinerary(id: number): Observable<ItineraryModel[]> {
+    return this.http.get<ItineraryModel[]>(`${this.apiItinerary}${id}`);
   }
 }

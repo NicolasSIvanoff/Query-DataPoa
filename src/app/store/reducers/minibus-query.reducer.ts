@@ -22,6 +22,7 @@ export const reducerRouteMiniBus = createReducer(
       ...state,
       routeMiniBus: action.routeMiniBus,
     })),
+
   on(
     queryMiniBusActions.loadQueryMiniBussFailure,
     (state, action): StateMiniBus => ({
