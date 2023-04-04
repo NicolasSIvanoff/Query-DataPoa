@@ -1,26 +1,53 @@
-<!-- {{ itineraryData | json }} -->
 <div class="base-bus">
+  <div class="container-img">
+    <img
+      class="bus-img"
+      src="../../../../assets/img/bus-med.jpg"
+      alt="Image bus"
+      loading="lazy"
+    />
+    <div class="text">
+      <span class="text-img">Veja os Itinerários</span>
+      <p>Rotas POA</p>
+    </div>
+  </div>
   <div class="container-table">
+    <div class="container-top-table">
+      <div class="text-top-table">
+        <span class="message"> Veja uma parada específica na tabela. </span>
+        <span class="message">
+          Ou se preferir, veja todo o trajeto no nosso mapa clicando aqui!
+          <button class="btn-route" (click)="openMap(itineraryData[0].id)">
+            Rota completa
+          </button>
+        </span>
+      </div>
+    </div>
+
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
       <ng-container matColumnDef="idlinha">
         <th mat-header-cell *matHeaderCellDef>Parada</th>
-        <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+        <td mat-cell *matCellDef="let dataLine">{{ dataLine.id }}</td>
       </ng-container>
       <ng-container matColumnDef="nome">
         <th mat-header-cell *matHeaderCellDef>Nome</th>
-        <td mat-cell *matCellDef="let element">{{ dataLine[0].nome }}</td>
+        <td mat-cell *matCellDef="let element">
+          {{ itineraryData[0].nome }}
+        </td>
       </ng-container>
       <ng-container matColumnDef="codigo">
         <th mat-header-cell *matHeaderCellDef>Código</th>
-        <td mat-cell *matCellDef="let element">{{ dataLine[0].codigo }}</td>
+        <td mat-cell *matCellDef="let element">
+          {{ itineraryData[0].codigo }}
+        </td>
       </ng-container>
       <ng-container matColumnDef="itinerario">
         <th mat-header-cell *matHeaderCellDef>Itinerário</th>
-        <td mat-cell *matCellDef="let element">
+        <td mat-cell *matCellDef="let dataLine">
           <button
             mat-raised-button
             class="btn-route"
-            (click)="navigateToMaps(element.lat, element.lng)"
+            (click)="navigateToMaps(dataLine.lat, dataLine.lng)"
           >
             Ver no Maps
             <em class="fas fa-map-marker-alt"></em>
@@ -35,3 +62,4 @@
     </mat-paginator>
   </div>
 </div>
+<app-footer></app-footer>

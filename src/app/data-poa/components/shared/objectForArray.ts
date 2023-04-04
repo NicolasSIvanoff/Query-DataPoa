@@ -8,11 +8,11 @@ export class ModifyObject {
 
   public objectForArray(obj: any): any {
     const array = [];
-    let itineraryFiltred: ItineraryModel[] = [{ idlinha: '', nome: '', codigo: '' }]
+    let itineraryFiltred: ItineraryModel[] = [{ id: '', nome: '', codigo: '', coordenadas: { lat: '', lng: '' } }]
     for (const prop in obj) {
       switch (prop) {
         case 'idlinha':
-          itineraryFiltred[0].idlinha = (obj[prop]);
+          itineraryFiltred[0].id = (obj[prop]);
           break;
         case 'nome':
           itineraryFiltred[0].nome = (obj[prop]);
@@ -25,8 +25,7 @@ export class ModifyObject {
           array.push(newObj);
       }
     }
-    this.store.dispatch(ItineraryActions.loadItinerarysSuccessFiltred({ itineraryFiltred: itineraryFiltred }));
-    console.log(itineraryFiltred)
-    return array;
+    this.store.dispatch(ItineraryActions.loadItinerarysSuccessFiltred({ itineraryFiltred: array }));
+    return itineraryFiltred;
   }
 }

@@ -5,8 +5,16 @@
   align-items: center;
   background-color: #424242;
 
-  .img-bus {
+  .img-poa {
     margin-left: 10px;
+    border-radius: 5px;
+  }
+
+  .title {
+    font-family: "emoji", "Font Awesome 5 Brands";
+    font-size: 26px;
+    margin: 0 10px 0 15px;
+    color: white;
   }
 
   button {
@@ -16,16 +24,10 @@
     margin: 0.5rem;
     font-family: "Foco", sans-serif;
     font-size: 1.25rem;
-    background-color: #1c8aff;
-  }
-  .btn-bus {
-    background-color: #0dcaf0;
+    background-color: #073b48;
   }
 
-  .title {
-    font-family: "foco", sans-serif;
-    font-size: 26px;
-    margin: 0 10px 0 15px;
-    color: white;
+  .btn-bus {
+    background-color: #000000;
   }
 }

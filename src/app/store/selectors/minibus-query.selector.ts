@@ -5,10 +5,12 @@ export const selectQueryMiniBusState =
   createFeatureSelector<fromQueryMiniBus.StateMiniBus>(
     fromQueryMiniBus.queryMiniBusFeatureKey
   );
+
 export const selectMiniBusSuccess = createSelector(
   selectQueryMiniBusState,
   (state) => state.routeMiniBus
 );
+
 export const selectMiniBusError = createSelector(
   selectQueryMiniBusState,
   (state) => state.error

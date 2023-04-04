@@ -1,6 +1,6 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { BusModel } from '../../model/bus-model';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { AppState } from 'src/app/store/state/app.state';
 import { Store } from '@ngrx/store';
 import { selectSuccessRoute } from 'src/app/store/selectors/bus-query.selector';
@@ -18,7 +18,7 @@ import { selectMiniBusSuccess } from 'src/app/store/selectors/minibus-query.sele
   templateUrl: './bus-query.component.html',
   styleUrls: ['./bus-query.component.scss']
 })
-export class BusQueryComponent implements OnInit, AfterViewInit {
+export class BusQueryComponent implements OnInit, OnDestroy, AfterViewInit {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -27,22 +27,21 @@ export class BusQueryComponent implements OnInit, AfterViewInit {
   public busQuery$: Observable<BusModel[]>;
   public miniBusQuery$: Observable<BusModel[]>;
   public busQuery!: BusModel[];
+  public findBusMessage: string = 'Encontre as paradas do seu ônibus aqui';
+  public subscription: Subscription[] = [];
+
   constructor(public store: Store<AppState>, private router: Router, private activedRouter: ActivatedRoute) {
     this.busQuery$ = this.store.select(selectSuccessRoute);
     this.miniBusQuery$ = this.store.select(selectMiniBusSuccess);
     this.dataSource = new MatTableDataSource<BusModel[]>();
   }
 
-  ngOnInit(): void {
-    if (this.activedRouter.snapshot.routeConfig?.path == 'bus') {
-      this.store.dispatch(busQueryActions.loadQueryBuss());
-    } else if (this.activedRouter.snapshot.routeConfig?.path == 'minibus') {
-      this.store.dispatch(miniBusActions.loadQueryMiniBuss());
-    }
+  public ngOnInit(): void {
+    this.verifyRoute();
     this.getBusQuery();
-
   }
-  ngAfterViewInit() {
+
+  ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
@@ -57,17 +56,34 @@ export class BusQueryComponent implements OnInit, AfterViewInit {
   }
 
   public getBusQuery(): void {
-    this.busQuery$.subscribe((busQuery) => {
-      this.dataSource = new MatTableDataSource(busQuery);
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
-      this.busQuery = busQuery;
-    });
-    this.miniBusQuery$.subscribe((miniBusQuery) => {
-      this.dataSource = new MatTableDataSource(miniBusQuery);
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
-      this.busQuery = miniBusQuery;
-    });
+    this.subscription.push(
+      this.busQuery$.subscribe((busQuery) => {
+        this.dataSource = new MatTableDataSource(busQuery);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+        this.busQuery = busQuery;
+      }));
+    this.subscription.push(
+      this.miniBusQuery$.subscribe((miniBusQuery) => {
+        this.dataSource = new MatTableDataSource(miniBusQuery);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+        this.busQuery = miniBusQuery;
+      }));
   }
+
+  public verifyRoute(): void {
+    if (this.activedRouter.snapshot.routeConfig?.path == 'bus') {
+      this.store.dispatch(busQueryActions.loadQueryBuss());
+      this.findBusMessage = 'Encontre as paradas do seu ônibus aqui'
+    } else if (this.activedRouter.snapshot.routeConfig?.path == 'minibus') {
+      this.store.dispatch(miniBusActions.loadQueryMiniBuss());
+      this.findBusMessage = 'Encontre as paradas do seu micro-ônibus aqui'
+    }
+  }
+
+  public ngOnDestroy(): void {
+    this.subscription.forEach((interrupted) => interrupted.unsubscribe());
+  }
+
 }

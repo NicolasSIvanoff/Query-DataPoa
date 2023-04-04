@@ -1,21 +1,18 @@
-/* You can add global styles to this file, and also import other style files */
+@import url("https://unpkg.com/leaflet@1.7.1/dist/leaflet.css");
 
-// @import "~@angular/material/prebuilt-themes/purple-green.css";
 html,
 body {
   height: 100%;
-}
-body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-  background-color: #e6e6e6;
+  font-family: Roboto, "Foco", sans-serif;
+  background-color: #012026;
 }
 
 .base-bus {
   width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  margin-top: 2%;
   align-items: center;
 }
 
@@ -23,22 +20,15 @@ body {
   width: 70%;
   table {
     width: 100%;
+    background-color: #223f46;
+  }
+  td,
+  th {
+    width: 25%;
   }
 }
 
-.mat-mdc-form-field {
-  font-size: 14px;
-  width: 100%;
-}
-
-td,
-th {
-  width: 25%;
-  // color: #050505 !important;
-}
-
 .btn-route {
-  background-color: none;
   border: 1px solid #1c8aff !important;
   color: #fff;
   font-family: "Foco", sans-serif;
@@ -52,8 +42,86 @@ th {
   width: 30%;
   font-size: 14px;
   background: #424242;
-  color: white;
+  color: #fff;
   border-radius: 5px;
+  padding: 1% 1% 0 2%;
+  margin-left: 5px;
+}
+
+.container-img {
+  width: 100%;
+  height: 100%;
+  .bus-img {
+    height: 80vh;
+    width: 100%;
+    max-width: 100vw;
+  }
+
+  .text {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.425);
+    color: #fff;
+    text-align: center;
+    width: 100%;
+
+    .text-img {
+      font-family: "emoji", "Font Awesome 5 Brands";
+      color: #fff;
+      font-size: 2em;
+      display: block;
+      margin-block-start: 0.83em;
+      margin-block-end: 0.83em;
+      font-weight: bold;
+    }
+  }
+}
+
+.container-top-table {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: end;
   margin-bottom: 2px;
-  padding: 1% 1% 0 1%;
+
+  .text-top-table {
+    width: 100%;
+    height: 4em !important;
+    background-color: #424242;
+    border-radius: 5px;
+    font-family: "Foco", sans-serif;
+    color: #fff;
+    font-size: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container-img {
+    .bus-img {
+      height: 55vh;
+    }
+  }
+
+  .title {
+    display: none;
+  }
+
+  .btn-route .itinerary {
+    font-size: 0;
+    text-indent: 100%;
+    white-space: nowrap;
+  }
+
+  .container-table {
+    width: 100%;
+    table {
+      width: 100%;
+    }
+  }
 }

@@ -1,12 +1,10 @@
+import { CoordinatesModel } from "./coordinates-model";
 export class ItineraryModel {
   constructor(
-    public idlinha: string,
+    public id: string,
     public nome: string,
     public codigo: string,
-    public coordenadas?: [
-      {
-        latitude: string,
-        longitude: string
-      }]
+    public coordenadas: CoordinatesModel
+
   ) { }
 }
